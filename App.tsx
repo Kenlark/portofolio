@@ -1,9 +1,9 @@
+import Starter from "./index";
+
 function App() {
   return (
     <>
-      <div>
-        <h1>page</h1>
-      </div>
+      <Starter />
     </>
   );
 }
