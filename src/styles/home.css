@@ -10,3 +10,8 @@
 .home-content {
   margin-block-end: 5rem;
 }
+
+.home .slick-slider {
+  max-width: 900px;
+  margin: 0 auto;
+}
