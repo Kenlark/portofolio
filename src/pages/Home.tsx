@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import testlogo from "../assets/images/css.svg";
+
 import ExpressLogo from "../assets/images/express-logo.svg?react";
 import NodeLogo from "../assets/images/node-js.svg?react";
 import HtmlLogo from "../assets/images/html5.svg?react";
@@ -52,7 +54,7 @@ function Home() {
         <h1>Welcome to the Home Page</h1>
         <p>This is the main page of our application.</p>
       </div>
-      <Card title="Project" description="description" />
+      <Card title="Project" description="description" img={testlogo} />
 
       <div className="carousel-wrapper">
         <div className="fade-left" />
