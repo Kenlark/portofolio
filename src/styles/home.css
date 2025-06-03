@@ -23,7 +23,6 @@
 
 .logo-slide {
   width: 110px !important;
-  outline: 1px solid red;
   display: flex !important;
   align-items: center;
   justify-content: center;

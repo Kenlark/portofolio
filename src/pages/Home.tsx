@@ -6,21 +6,30 @@ import "slick-carousel/slick/slick-theme.css";
 
 import express_logo from "../assets/images/express-logo.svg";
 import node_logo from "../assets/images/node-js.svg";
+import html_logo from "../assets/images/html5.svg";
+import css_logo from "../assets/images/css.svg";
+import javascript_logo from "../assets/images/javascript.svg";
+import react_logo from "../assets/images/react.svg";
+import typescript_logo from "../assets/images/typescript.svg";
+import mongodb_logo from "../assets/images/mongodb.svg";
+import postgresql_logo from "../assets/images/postgresql.svg";
+import vite_logo from "../assets/images/vite.svg";
+import git_logo from "../assets/images/git.svg";
+import figma_logo from "../assets/images/figma.svg";
 
 const logos = [
   express_logo,
   node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
-  node_logo,
+  html_logo,
+  css_logo,
+  javascript_logo,
+  react_logo,
+  typescript_logo,
+  mongodb_logo,
+  postgresql_logo,
+  vite_logo,
+  git_logo,
+  figma_logo,
 ];
 
 function Home() {
