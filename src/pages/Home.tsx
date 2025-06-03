@@ -4,32 +4,32 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import express_logo from "../assets/images/express-logo.svg";
-import node_logo from "../assets/images/node-js.svg";
-import html_logo from "../assets/images/html5.svg";
-import css_logo from "../assets/images/css.svg";
-import javascript_logo from "../assets/images/javascript.svg";
-import react_logo from "../assets/images/react.svg";
-import typescript_logo from "../assets/images/typescript.svg";
-import mongodb_logo from "../assets/images/mongodb.svg";
-import postgresql_logo from "../assets/images/postgresql.svg";
-import vite_logo from "../assets/images/vite.svg";
-import git_logo from "../assets/images/git.svg";
-import figma_logo from "../assets/images/figma.svg";
+import ExpressLogo from "../assets/images/express-logo.svg?react";
+import NodeLogo from "../assets/images/node-js.svg?react";
+import HtmlLogo from "../assets/images/html5.svg?react";
+import CssLogo from "../assets/images/css.svg?react";
+import JavascriptLogo from "../assets/images/javascript.svg?react";
+import ReactLogo from "../assets/images/react.svg?react";
+import TypescriptLogo from "../assets/images/typescript.svg?react";
+import MongodbLogo from "../assets/images/mongodb.svg?react";
+import PostgresqlLogo from "../assets/images/postgresql.svg?react";
+import ViteLogo from "../assets/images/vite.svg?react";
+import GitLogo from "../assets/images/git.svg?react";
+import FigmaLogo from "../assets/images/figma.svg?react";
 
 const logos = [
-  express_logo,
-  node_logo,
-  html_logo,
-  css_logo,
-  javascript_logo,
-  react_logo,
-  typescript_logo,
-  mongodb_logo,
-  postgresql_logo,
-  vite_logo,
-  git_logo,
-  figma_logo,
+  { Component: ExpressLogo, name: "express" },
+  { Component: NodeLogo, name: "node" },
+  { Component: HtmlLogo, name: "html" },
+  { Component: CssLogo, name: "css" },
+  { Component: JavascriptLogo, name: "js" },
+  { Component: ReactLogo, name: "react" },
+  { Component: TypescriptLogo, name: "ts" },
+  { Component: MongodbLogo, name: "mongo" },
+  { Component: PostgresqlLogo, name: "postgres" },
+  { Component: ViteLogo, name: "vite" },
+  { Component: GitLogo, name: "git" },
+  { Component: FigmaLogo, name: "figma" },
 ];
 
 function Home() {
@@ -54,13 +54,18 @@ function Home() {
       </div>
       <Card title="Project" description="description" />
 
-      <Slider {...settings} className="carousel">
-        {logos.map((logo, index) => (
-          <div key={index} className="logo-slide">
-            <img src={logo} alt={`Logo ${index + 1}`} className="logo" />
-          </div>
-        ))}
-      </Slider>
+      <div className="carousel-wrapper">
+        <div className="fade-left" />
+        <div className="fade-right" />
+
+        <Slider {...settings}>
+          {logos.map(({ Component, name }, index) => (
+            <div key={index} className="logo-slide">
+              <Component className={`logo ${name}-logo`} />
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }

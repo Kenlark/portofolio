@@ -17,13 +17,102 @@
 }
 
 .logo {
-  width: 50px;
+  width: 40px;
   height: auto;
 }
 
 .logo-slide {
   width: 110px !important;
+  height: 70px;
   display: flex !important;
   align-items: center;
   justify-content: center;
+}
+
+.logo-slide:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.1s ease-in-out;
+}
+
+.html-logo {
+  fill: #e34f26;
+}
+
+.postgres-logo {
+  fill: #4169e1;
+}
+
+.ts-logo {
+  fill: #3178c6;
+}
+
+.js-logo {
+  fill: #f7df1e;
+}
+
+.react-logo {
+  fill: #61dafb;
+}
+
+.mongo-logo {
+  fill: #47a248;
+}
+
+.vite-logo {
+  fill: #646cff;
+}
+
+.git-logo {
+  fill: #f05032;
+}
+
+.figma-logo {
+  fill: #f24e1e;
+}
+
+.express-logo {
+  fill: #000000;
+}
+
+.css-logo {
+  fill: #264de4;
+}
+
+.node-logo {
+  fill: #8cc84b;
+}
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
 }
