@@ -4,18 +4,37 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import logo from "../assets/images/express-logo.png";
+import express_logo from "../assets/images/express-logo.svg";
+import node_logo from "../assets/images/node-js.svg";
+
+const logos = [
+  express_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+  node_logo,
+];
 
 function Home() {
   const settings = {
     dots: false,
     infinite: true,
     speed: 3000,
-    slidesToShow: 5,
+    slidesToShow: 1,
+    slideToScroll: 1,
     autoplay: true,
     cssEase: "linear",
-    autoplaySpeed: 0,
-    arrows: true,
+    autoplaySpeed: 100,
+    arrows: false,
+    variableWidth: true,
   };
 
   return (
@@ -26,22 +45,12 @@ function Home() {
       </div>
       <Card title="Project" description="description" />
 
-      <Slider {...settings}>
-        <div>
-          <img src={logo} />
-        </div>
-        <div>
-          <h3>Slide 2</h3>
-        </div>
-        <div>
-          <h3>Slide 3</h3>
-        </div>
-        <div>
-          <h3>Slide 4</h3>
-        </div>
-        <div>
-          <h3>Slide 5</h3>
-        </div>
+      <Slider {...settings} className="carousel">
+        {logos.map((logo, index) => (
+          <div key={index} className="logo-slide">
+            <img src={logo} alt={`Logo ${index + 1}`} className="logo" />
+          </div>
+        ))}
       </Slider>
     </div>
   );
