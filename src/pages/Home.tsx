@@ -54,7 +54,50 @@ function Home() {
         <h1>Welcome to the Home Page</h1>
         <p>This is the main page of our application.</p>
       </div>
+
       <Card title="Project" description="description" img={testlogo} />
+
+      <div>
+        <h2 className="carousel-title">Technologies</h2>
+        <div className="carousel-description">
+          <div>
+            <p>HTML</p>
+          </div>
+          <div>
+            <p>CSS3</p>
+          </div>
+          <div>
+            <p>JavaScript</p>
+          </div>
+          <div>
+            <p>TypeScript</p>
+          </div>
+          <div>
+            <p>React</p>
+          </div>
+          <div>
+            <p>Vite</p>
+          </div>
+          <div>
+            <p>MongoDB</p>
+          </div>
+          <div>
+            <p>PostgreSQL</p>
+          </div>
+          <div>
+            <p>Node.js</p>
+          </div>
+          <div>
+            <p>Express.js</p>
+          </div>
+          <div>
+            <p>Figma</p>
+          </div>
+          <div>
+            <p>Git</p>
+          </div>
+        </div>
+      </div>
 
       <div className="carousel-wrapper">
         <div className="fade-left" />
