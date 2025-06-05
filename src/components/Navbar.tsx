@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <nav className={`navbar ${showNavbar ? "show" : "hide"}`}>
-      <div className="navbar-left">MyApp</div>
+      <div className="navbar-left">Portofolio</div>
       <div className="navbar-center">
         <ul className="navbar-links">
           <li>
