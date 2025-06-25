@@ -36,7 +36,10 @@ const TerminalMac = ({ onClose }: { onClose: () => void }) => {
   };
 
   return (
-    <Draggable handle=".terminal-header" nodeRef={nodeRef}>
+    <Draggable
+      handle=".terminal-header"
+      nodeRef={nodeRef as React.RefObject<HTMLElement>}
+    >
       <div className="terminal-mac" ref={nodeRef}>
         <div className="terminal-header">
           <button onClick={onClose} className="btn-close"></button>
