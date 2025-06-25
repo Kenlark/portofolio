@@ -10,22 +10,22 @@ permissions:
 jobs:
   respond_to_issue:
     runs-on: ubuntu-latest
-
     steps:
       - name: Envoie une réponse automatique à l'issue
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            const body = 'Merci pour votre issue ! Nous allons l\'examiner dès que possible. Si le problème est résolu, écrivez "close" dans un commentaire pour fermer l\'issue.';
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: 'Merci pour votre issue ! Nous allons l\'examiner dès que possible.'
-            })
+              body,
+            });
 
-      - name: Fermer l'issue si le titre contient 'close'
-        if: contains(github.event.issue.title, 'close')
+      - name: Fermer l'issue si le commentaire contient "close"
+        if: contains(github.event.comment.body, 'close')
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
