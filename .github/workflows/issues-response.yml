@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   respond_to_issue:
+    if: github.event.issue.state == 'open' && github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
       - name: Envoie une réponse automatique à l'issue
