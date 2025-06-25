@@ -6,8 +6,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import testlogo from "../assets/images/css.svg";
-
 import ExpressLogo from "../assets/images/express-logo.svg?react";
 import NodeLogo from "../assets/images/node-js.svg?react";
 import HtmlLogo from "../assets/images/html5.svg?react";
