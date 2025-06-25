@@ -6,7 +6,6 @@ on:
 
 permissions:
   issues: write
-  comments: write
 
 jobs:
   respond_to_issue:
