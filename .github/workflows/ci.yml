@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build step
-        run: echo "Executing build steps here..."
+        run: npm ci && npm run build
 
   test:
     needs: build # Ne se lance que si le build réussit
