@@ -9,6 +9,8 @@ on:
       - main # Exécuter pour les pull requests vers la branche principale
   schedule:
     - cron: "0 0 * * *" # Execute à minuit UTC tous les jours
+  tags:
+    - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
 
 jobs:
   build:
