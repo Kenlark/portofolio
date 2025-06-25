@@ -9,25 +9,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send response
+      - name: Envoie une réponse automatique à l'issue
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.issues.createComment({
+            await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
               body: 'Merci pour votre issue ! Nous allons l\'examiner dès que possible.'
             })
 
-      - name: Close issue if title contains "close"
+      - name: Fermer l'issue si le titre contient 'close'
         if: contains(github.event.issue.title, 'close')
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            await github.issues.update({
+            await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
