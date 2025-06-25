@@ -9,8 +9,9 @@ on:
   pull_request:
     branches:
       - main # Exécuter pour les pull requests vers la branche principale
+  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # Execute à minuit UTC tous les jours
+    - cron: "*/5 * * * *" # Execute toutes les 5 minutes
 
 jobs:
   build:
