@@ -2,14 +2,15 @@ name: issue-response
 
 on:
   issues:
-    types: [opened, edited] # Exécuter pour les issues ouvertes ou modifiées
+    types: [opened, edited]
 
 jobs:
   respond_to_issue:
-    runs-on: ubuntu-latest # Utiliser la dernière version d'Ubuntu
+    runs-on: ubuntu-latest
+
     steps:
       - name: Send response
-        uses: actions/github-script@v6 # Utiliser l'action GitHub Script pour envoyer une réponse
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -20,16 +21,15 @@ jobs:
               body: 'Merci pour votre issue ! Nous allons l\'examiner dès que possible.'
             })
 
-      - name: Close issue
-        if: github.event.issue.title.includes('close') # Fermer l'issue si le titre contient 'close'
+      - name: Close issue if title contains "close"
+        if: contains(github.event.issue.title, 'close')
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }} # Utiliser le token GitHub pour authentifier l'action
-          script: | # Fermer l'issue si le titre contient 'close'
-            const issue = context.payload.issue;
-            await github.rest.issues.update({
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: issue.number,
+              issue_number: context.issue.number,
               state: 'closed'
-            });
+            })
