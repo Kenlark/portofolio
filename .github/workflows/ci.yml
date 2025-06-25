@@ -2,10 +2,10 @@ name: continuous-integration
 
 on:
   push:
-    - branches:
-        - main # Exécuter pour les push vers la branche principale
-    - tags:
-        - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
+    branches:
+      - main # Exécuter pour les push vers la branche principale
+    tags:
+      - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
   pull_request:
     branches:
       - main # Exécuter pour les pull requests vers la branche principale
