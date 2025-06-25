@@ -1,0 +1,35 @@
+name: issue-response
+
+on:
+  issues:
+    types: [opened, edited] # Exécuter pour les issues ouvertes ou modifiées
+
+jobs:
+  respond_to_issue:
+    runs-on: ubuntu-latest # Utiliser la dernière version d'Ubuntu
+    steps:
+      - name: Send response
+        uses: actions/github-script@v6 # Utiliser l'action GitHub Script pour envoyer une réponse
+        with:
+        github-token: ${{ secrets.GITHUB_TOKEN }} # Utiliser le token GitHub pour authentifier l'action
+        script: | # Envoyer une réponse à l'issue
+          github.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            body: 'Merci pour votre issue ! Nous allons l\'examiner dès que possible.' 
+          });
+
+      - name: Close issue
+        if: github.event.issue.title.includes('close') # Fermer l'issue si le titre contient 'close'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Utiliser le token GitHub pour authentifier l'action
+          script: | # Fermer l'issue si le titre contient 'close'
+            const issue = context.payload.issue;
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              state: 'closed'
+            });

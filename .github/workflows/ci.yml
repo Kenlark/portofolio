@@ -1,0 +1,20 @@
+name: continuous-integration
+
+on:
+  push:
+    branches:
+      - main # Exécuter pour les push vers la branche principale
+  pull_request:
+    branches:
+      - main # Exécuter pour les pull requests vers la branche principale
+  schedule:
+    - cron: "0 0 * * *" # Execute à minuit UTC tous les jours
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Utiliser la dernière version d'Ubuntu
+
+    steps:
+      - name: Verification du code
+        uses: actions/checkout@v4 # Vérifier le code source du dépôt
+        run: echo "Workflow exécuté suite à un push ou une pull request sur la branche main." # Message de confirmation
