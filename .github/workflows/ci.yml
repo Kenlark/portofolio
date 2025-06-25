@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest # Utiliser la dernière version d'Ubuntu
 
     steps:
-      - name: Verification du code
-        uses: actions/checkout@v4 # Vérifier le code source du dépôt
-        run: echo "Workflow exécuté suite à un push ou une pull request sur la branche main." # Message de confirmation
+      - name: Checkout code
+        uses: actions/checkout@v4 # Cloner le dépôt
+
+      - name: Configurer un message
+        run: echo "Workflow exécuté suite à un push ou une pull request sur la branche main."
