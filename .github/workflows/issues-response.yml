@@ -4,6 +4,10 @@ on:
   issues:
     types: [opened, edited]
 
+permissions:
+  issues: write
+  comments: write
+
 jobs:
   respond_to_issue:
     runs-on: ubuntu-latest
