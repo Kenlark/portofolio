@@ -4,15 +4,11 @@ on:
   issues:
     types: [opened, edited]
 
-  issue_comment:
-    types: [created]
-
 permissions:
   issues: write
 
 jobs:
   respond_to_issue:
-    if: github.event.issue.state == 'open' && github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
       - name: Envoie une réponse automatique à l'issue
@@ -27,16 +23,3 @@ jobs:
               issue_number: context.issue.number,
               body,
             });
-
-      - name: Fermer l'issue si le commentaire contient "close"
-        if: contains(github.event.comment.body, 'close')
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            await github.rest.issues.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              state: 'closed'
-            })
