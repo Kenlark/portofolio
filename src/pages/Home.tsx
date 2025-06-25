@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Card from "../components/CardProject";
 import "../styles/home.css";
 import Slider from "react-slick";
@@ -18,6 +20,7 @@ import PostgresqlLogo from "../assets/images/postgresql.svg?react";
 import ViteLogo from "../assets/images/vite.svg?react";
 import GitLogo from "../assets/images/git.svg?react";
 import FigmaLogo from "../assets/images/figma.svg?react";
+import TerminalMac from "../components/Terminal";
 
 const logos = [
   { Component: ExpressLogo, name: "express" },
@@ -35,6 +38,8 @@ const logos = [
 ];
 
 function Home() {
+  const [showTerminal, SetshowTerminal] = useState(false);
+
   const settings = {
     dots: false,
     infinite: true,
@@ -55,7 +60,16 @@ function Home() {
         <p>This is the main page of our application.</p>
       </div>
 
-      <Card title="Project" description="description" img={testlogo} />
+      <Card title="Project" />
+
+      <div>
+        <button onClick={() => SetshowTerminal((prev) => !prev)}>
+          Projects
+        </button>
+        {showTerminal ? (
+          <TerminalMac onClose={() => SetshowTerminal(false)} />
+        ) : null}
+      </div>
 
       <div>
         <h2 className="carousel-title">Technologies</h2>

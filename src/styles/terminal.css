@@ -1,0 +1,44 @@
+.terminal-mac {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #252526;
+}
+
+.btn-close {
+  background-color: #f14c4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+}
+
+.terminal-input {
+  width: 100%;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border: none;
+  outline: none;
+  margin-block-start: 1.5rem;
+  font-size: medium;
+}
+
+.terminal-body {
+  margin-block-start: 1rem;
+}
+
+.lines {
+  margin-block-start: 0.3rem;
+  margin-block-end: 0.3rem;
+}
