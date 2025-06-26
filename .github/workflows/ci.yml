@@ -10,8 +10,6 @@ on:
     branches:
       - main # Exécuter pour les pull requests vers la branche principale
   workflow_dispatch:
-  schedule:
-    - cron: "0 * * * *" # Execute toutes les heures
 
 jobs:
   build:
