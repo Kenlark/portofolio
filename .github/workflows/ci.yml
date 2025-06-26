@@ -32,5 +32,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy step
-        run: echo "Deploying application here..."
+
+      - name: Connexion à Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build de l'image Docker
+        run: docker build -f Dockerfile.prod -t ${{ secrets.DOCKER_USERNAME }}/app-portofolio:latest .
+
+      - name: Push de l'image Docker
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/app-portofolio:latest
