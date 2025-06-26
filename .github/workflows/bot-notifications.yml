@@ -1,0 +1,31 @@
+name: Notifications Bot Discord
+
+on:
+  push:
+    branches:
+      - main # Exécuter pour les push vers la branche principale
+    tags:
+      - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
+  pull_request:
+    branches:
+      - main # Exécuter pour les pull requests vers la branche principale
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Send notification to Discord
+        uses: Ilshidur/action-discord@v2
+        with:
+          webhook-url: ${{ secrets.Notifications_Bot_Discord }}
+          username: "GitHub Actions Bot"
+          avatar-url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+          content: |
+            A new event has occurred in the repository:
+            - Event type: ${{ github.event_name }}
+            - Repository: ${{ github.repository }}
+            - Commit: ${{ github.sha }}
