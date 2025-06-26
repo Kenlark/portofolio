@@ -22,12 +22,12 @@ jobs:
       - name: Envoi de notification Discord
         uses: stegzilla/discord-notify@v2
         with:
-          webhook-url: ${{ secrets.Notifications_Bot_Discord }}
+          webhook_url: ${{ secrets.Notifications_Bot_Discord }}
           title: "Nouvelle PR"
           message: |
             **Nouvelle PR ouverte :** ${{ github.event.pull_request.title }}
             **Auteur :** ${{ github.event.pull_request.user.login }}
             **Description :** ${{ github.event.pull_request.body }}
-          includes-image: true
-          image-url: ${{ github.event.pull_request.user.avatar_url }}
+          includes_image: true
+          image_url: ${{ github.event.pull_request.user.avatar_url }}
           username: "Notifications d'une nouvelle PR"
