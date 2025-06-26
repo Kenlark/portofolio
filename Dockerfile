@@ -22,13 +22,13 @@ FROM nginx:alpine
 # Supprime la config par défaut de nginx
 RUN rm -rf /usr/share/nginx/html/*
 
-# Affiche le contenu du dossier nginx avant la copie (devrait être vide)
-RUN rm -rf /usr/share/nginx/html/*
+# Copie la config personnalisée
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copie le build dans le dossier nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Affiche le contenu copié (après la copie)
+# Affiche le contenu copié (debug)
 RUN ls -l /usr/share/nginx/html
 
 # Expose le port 80
@@ -36,3 +36,4 @@ EXPOSE 80
 
 # Lance nginx en mode premier plan
 CMD ["nginx", "-g", "daemon off;"]
+
