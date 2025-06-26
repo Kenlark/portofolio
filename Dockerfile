@@ -23,7 +23,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Affiche le contenu du dossier nginx avant la copie (devrait être vide)
-RUN ls -l /usr/share/nginx/html 
+RUN rm -rf /usr/share/nginx/html/*
 
 # Copie le build dans le dossier nginx
 COPY --from=build /app/dist /usr/share/nginx/html
