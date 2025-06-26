@@ -19,7 +19,7 @@ jobs:
           message: |
             **Nouvelle PR ouverte :** ${{ github.event.pull_request.title }}
             **Auteur :** ${{ github.event.pull_request.user.login }}
-            **Description :** ${{ github.event.pull_request.body }}
+            **Description :** ${{ github.event.pull_request.body || "Pas de description fournie" }}
           includes_image: true
-          image_url: ${{ github.event.pull_request.user.avatar_url }}
+          avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
           username: "Notifications d'une nouvelle PR"
