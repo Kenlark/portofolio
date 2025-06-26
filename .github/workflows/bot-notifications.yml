@@ -7,6 +7,7 @@ on:
     tags:
       - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
   pull_request:
+    types: [opened, reopened] # Exécuter pour les PR ouvertes, réouvertes
     branches:
       - main # Exécuter pour les pull requests vers la branche principale
   workflow_dispatch:
@@ -18,14 +19,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Send notification to Discord
-        uses: Ilshidur/action-discord@v1
+      - name: Envoi de notification Discord
+        uses: stegzilla/discord-notify@v2
         with:
           webhook-url: ${{ secrets.Notifications_Bot_Discord }}
-          username: "GitHub Actions Bot"
-          avatar-url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-          content: |
-            A new event has occurred in the repository:
-            - Event type: ${{ github.event_name }}
-            - Repository: ${{ github.repository }}
-            - Commit: ${{ github.sha }}
+          title: "Nouvelle PR"
+          message: |
+            **Nouvelle PR ouverte :** ${{ github.event.pull_request.title }}
+            **Auteur :** ${{ github.event.pull_request.user.login }}
+            **Description :** ${{ github.event.pull_request.body }}
+          includes-image: true
+          image-url: ${{ github.event.pull_request.user.avatar_url }}
+          username: "Notifications d'une nouvelle PR"
