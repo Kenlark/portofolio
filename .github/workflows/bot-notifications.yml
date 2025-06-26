@@ -1,16 +1,8 @@
 name: Notifications Bot Discord
 
 on:
-  push:
-    branches:
-      - main # Exécuter pour les push vers la branche principale
-    tags:
-      - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
   pull_request:
     types: [opened, reopened] # Exécuter pour les PR ouvertes, réouvertes
-    branches:
-      - main # Exécuter pour les pull requests vers la branche principale
-  workflow_dispatch:
 
 jobs:
   notify:
