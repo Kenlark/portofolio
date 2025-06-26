@@ -37,7 +37,7 @@ jobs:
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Build de l'image Docker
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/app-portofolio:latest .
+        run: docker build -f Dockerfile.prod -t ${{ secrets.DOCKER_USERNAME }}/app-portofolio:latest .
 
       - name: Push de l'image Docker
         run: docker push ${{ secrets.DOCKER_USERNAME }}/app-portofolio:latest
