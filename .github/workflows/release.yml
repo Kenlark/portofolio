@@ -1,0 +1,44 @@
+name: continuous-integration
+
+on:
+  push:
+    tags:
+      - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Etape de build
+        run: npm ci && npm run build
+
+  test:
+    needs: build # Ne se lance que si le build réussit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Etape de test
+        run: echo "Executing tests here..."
+
+  deploy:
+    needs: test # Ne se lance que si les tests réussissent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Connexion à Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Extraire le tag Git
+        id: vars
+        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      # GITHUB_REF contient refs/tags/v1.2.3
+      # La syntaxe Bash ${GITHUB_REF#refs/tags/} enlève le préfixe refs/tags/ pour ne garder que v1.2.3
+
+      - name: Build de l'image Docker
+        run: docker build -f Dockerfile.prod -t ${{ secrets.DOCKER_USERNAME }}/app-portofolio:${{ env.TAG }} .
+
+      - name: Push de l'image Docker
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/app-portofolio:${{ env.TAG }}
