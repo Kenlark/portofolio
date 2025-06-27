@@ -39,7 +39,7 @@ jobs:
       # La syntaxe Bash ${GITHUB_REF#refs/tags/} enlève le préfixe refs/tags/ pour ne garder que v1.2.3
 
       - name: Build de l'image Docker
-        run: docker build -f Dockerfile.prod -t ${{ secrets.DOCKER_USERNAME }}/app-portofolio:{{ env.TAG }} .
+        run: docker build -f Dockerfile.prod -t ${{ secrets.DOCKER_USERNAME }}/app-portofolio:${{ env.TAG }} .
 
       - name: Push de l'image Docker
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/app-portofolio:{{ env.TAG }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/app-portofolio:${{ env.TAG }}
