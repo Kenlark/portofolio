@@ -13,6 +13,9 @@ jobs:
       - name: Etape de build
         run: npm ci && npm run build
 
+      - name: Lint du code
+        run: npm run lint
+
   test:
     needs: build # Ne se lance que si le build réussit
     runs-on: ubuntu-latest
