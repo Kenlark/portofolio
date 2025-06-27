@@ -25,7 +25,7 @@ jobs:
   deploy:
     needs: test # Ne se lance que si les tests réussissent
     runs-on: ubuntu-latest
-    if: githu.events.name !== 'pull_request' # Ne pas déployer pour les pull requests
+    if: github.event_name != 'pull_request' # Ne pas déployer pour les pull requests
     steps:
       - uses: actions/checkout@v4
 
