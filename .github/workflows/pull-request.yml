@@ -1,9 +1,9 @@
-name: continuous-integration
+name: CI pour les Pull Requests
 
 on:
-  push:
-    tags:
-      - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
+  pull_request:
+    branches:
+      - main # Exécuter pour les pull requests vers la branche principale
   workflow_dispatch:
 
 jobs:
@@ -11,19 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Etape de build
+      - name: Étape de build
         run: npm ci && npm run build
 
   test:
-    needs: build # Ne se lance que si le build réussit
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Etape de test
-        run: echo "Executing tests here..."
+      - name: Étape de test
+        run: echo "Exécution des tests ici..."
 
   deploy:
-    needs: test # Ne se lance que si les tests réussissent
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
