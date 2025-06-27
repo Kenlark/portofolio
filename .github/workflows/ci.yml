@@ -2,13 +2,8 @@ name: continuous-integration
 
 on:
   push:
-    branches:
-      - main # Exécuter pour les push vers la branche principale
     tags:
       - "v*.*.*" # Exécuter pour les tags de version (ex: v1.0.0)
-  pull_request:
-    branches:
-      - main # Exécuter pour les pull requests vers la branche principale
   workflow_dispatch:
 
 jobs:
@@ -30,6 +25,7 @@ jobs:
   deploy:
     needs: test # Ne se lance que si les tests réussissent
     runs-on: ubuntu-latest
+    if: githu.events.name !== 'pull_request' # Ne pas déployer pour les pull requests
     steps:
       - uses: actions/checkout@v4
 
