@@ -22,3 +22,8 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 4173
 
 CMD ["serve", "-s", "dist", "-l", "4173"]
+
+# serve est utilisé pour servir les fichiers statiques
+# -s : Redirige les requêtes vers index.html pour les app sur React, Vue, etc.
+# -l : Définit le port d'écoute (ici 4173)
+# dist : Répertoire contenant le build de l'application
