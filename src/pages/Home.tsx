@@ -20,6 +20,20 @@ import GitLogo from "../assets/images/git.svg?react";
 import FigmaLogo from "../assets/images/figma.svg?react";
 import TerminalMac from "../components/Terminal";
 
+// Mock react-slick avant tout
+
+// On mocke `react-slick` avant d'importer `Home`
+// car il utilise `enquire.js` qui appelle `window.matchMedia`
+// non défini dans jsdom, causant une erreur au test.
+// Ce mock empêche le chargement d'`enquire.js` et évite l'erreur.
+
+vi.mock("react-slick", () => {
+  return {
+    __esModule: true,
+    default: (props: any) => <div>{props.children}</div>,
+  };
+});
+
 const logos = [
   { Component: ExpressLogo, name: "express" },
   { Component: NodeLogo, name: "node" },
