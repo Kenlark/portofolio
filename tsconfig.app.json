@@ -23,7 +23,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    "types": ["vitest", "vitest/globals"]
+    "types": ["vitest", "vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src", "App.tsx"]
 }
